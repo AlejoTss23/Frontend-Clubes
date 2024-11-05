@@ -1,0 +1,66 @@
+.table-container {
+  max-height: calc(100vh - 200px); /* Ajusta el tamaño según tus necesidades */
+
+  margin-top: 20px;
+}
+
+.custom-offcanvas-width {
+  width: 250px; /* Ajusta este valor según tus necesidades */
+}
+.custom-navbar-bg {
+  background-color: #b0b0b08f; /* Un gris intermedio */
+}
+
+.custom-offcanvas-width .offcanvas-body .nav-link {
+  font-size: 1.2rem; /* Aumenta el tamaño de la fuente */
+  padding: 0.75rem 1rem; /* Añade espaciado alrededor de cada elemento */
+  font-weight: 500; /* Aumenta el grosor de la fuente */
+}
+
+.custom-offcanvas-width .offcanvas-body .nav-link:hover {
+  background-color: #e0e0e0; /* Añade un color de fondo al pasar el ratón */
+  border-radius: 5px; /* Redondea las esquinas del fondo */
+}
+
+.custom-offcanvas-width .offcanvas-title {
+  font-size: 1.5rem; /* Aumenta el tamaño del título */
+  font-weight: bold;
+}
+
+.custom-offcanvas-width .offcanvas-header {
+  padding-bottom: 0.5rem; /* Ajusta el espaciado en la parte inferior del header */
+}
+
+.nav-item.mt-auto {
+  margin-top: auto; /* Esto asegura que el botón esté en la parte inferior */
+}
+
+.nav-item .btn {
+  font-size: 1.5rem; /* Aumenta el tamaño del icono */
+  padding: 0.75rem; /* Ajusta el espaciado alrededor del icono */
+  background-color: #f8f9fa; /* Color de fondo del botón */
+  border: none; /* Quita el borde */
+}
+
+.nav-item .btn:hover {
+  background-color: #e0e0e0; /* Color de fondo al pasar el ratón */
+}
+
+.nav-item .bi-box-arrow-right {
+  font-size: 1.5rem; /* Tamaño del icono */
+  color: #dc3545; /* Color del icono */
+}
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: auto; /* Asegura que se pueda hacer scroll dentro del offcanvas */
+}
+
+.nav-item.mt-auto {
+  margin-top: auto;
+}
+
+
+

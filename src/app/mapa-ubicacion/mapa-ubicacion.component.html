@@ -1,0 +1,92 @@
+<app-sidenav></app-sidenav>
+<div class="container my-5">
+  <div class="row">
+    <!-- Map Section -->
+    <div class="col-lg-7">
+      <div class="map-container mb-4">
+        <div id="map" class="rounded shadow-sm" style="height: 400px; width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="col-lg-5">
+      <div class="form-container p-4 bg-white rounded shadow-sm">
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input id="nombre" [(ngModel)]="markerActual.nombre" name="nombre" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección:</label>
+            <input id="direccion" [(ngModel)]="markerActual.direccion" name="direccion" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="latitud" class="form-label">Latitud:</label>
+            <input id="latitud" [(ngModel)]="markerActual.latitud" name="latitud" class="form-control" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="longitud" class="form-label">Longitud:</label>
+            <input id="longitud" [(ngModel)]="markerActual.longitud" name="longitud" class="form-control" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="info" class="form-label">Información:</label>
+            <textarea id="info" [(ngModel)]="markerActual.info" name="info" class="form-control"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">{{ markerActual.id ? 'Actualizar' : 'Agregar' }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- List of Markers Section -->
+  <div class="club-list mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="mb-3">Filtrar Marcadores</h4>
+        <input [(ngModel)]="searchText" placeholder="Buscar por nombre o dirección" class="form-control mb-4" />
+
+        <h4 class="mb-3">Marcadores Existentes</h4>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let marker of markers | filter:searchText">
+            <span class="marker-info">{{ marker.nombre }} - {{ marker.direccion }} ({{ marker.latitud }}, {{ marker.longitud }})</span>
+            <div class="button-group">
+              <button (click)="onEdit(marker)" class="btn btn-sm btn-outline-primary me-2">Editar</button>
+              <button (click)="onDelete(marker.id)" class="btn btn-sm btn-outline-danger me-2">Eliminar</button>
+              <button (click)="onViewDetails(marker)" class="btn btn-sm btn-outline-secondary">Ver Detalles</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Modal de Detalles -->
+    <div *ngIf="selectedMarker" class="modal fade show d-block" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detalles del Club</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeDetails()"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Nombre:</strong> {{ selectedMarker.nombre }}</p>
+            <p><strong>Dirección:</strong> {{ selectedMarker.direccion }}</p>
+            <p><strong>Latitud:</strong> {{ selectedMarker.latitud }}</p>
+            <p><strong>Longitud:</strong> {{ selectedMarker.longitud }}</p>
+            <p><strong>Información:</strong> {{ selectedMarker.info }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeDetails()">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  

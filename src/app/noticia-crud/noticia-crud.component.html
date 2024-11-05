@@ -1,0 +1,54 @@
+<app-sidenav></app-sidenav>
+<div class="container mt-5">
+  <div class="card mx-auto shadow-lg" style="max-width: 600px;">
+    <div class="card-body text-center">
+      <h2 class="card-title mb-4" style="font-family: 'Roboto', sans-serif; font-weight: 500;">{{ editMode ? 'Editar Noticia' : 'Crear Noticia' }}</h2>
+      <form (ngSubmit)="saveNoticia()">
+        <div class="mb-3">
+          <label for="titulo" class="form-label" style="font-weight: 600;">Título:</label>
+          <input type="text" id="titulo" [(ngModel)]="noticiaForm.titulo" name="titulo" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="contenido" class="form-label" style="font-weight: 600;">Contenido:</label>
+          <textarea id="contenido" [(ngModel)]="noticiaForm.contenido" name="contenido" rows="5" class="form-control" required></textarea>
+        </div>
+
+        <!-- Mostrar la imagen solo si existe una URL -->
+        <div *ngIf="noticiaForm.imagenUrl" class="mb-3">
+          <img [src]="noticiaForm.imagenUrl" alt="{{ noticiaForm.titulo }}" class="img-fluid rounded mb-3 shadow">
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="submit" class="btn btn-primary btn-lg" style="font-weight: 500;">{{ editMode ? 'Guardar Cambios' : 'Crear Noticia' }}</button>
+          <button type="button" class="btn btn-secondary btn-lg" (click)="resetForm()" style="font-weight: 500;">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Componente para subir imágenes, fuera del formulario -->
+  <div class="card mx-auto mt-4 shadow" style="max-width: 600px;">
+    <div class="card-body text-center">
+        <app-image-upload (imageUploaded)="onImageUploaded($event)"></app-image-upload>
+    </div>
+</div>
+
+  <div class="mt-5">
+    <h2 class="text-center mb-4" style="font-family: 'Roboto', sans-serif; font-weight: 500;">Lista de Noticias</h2>
+    <ul class="list-group">
+      <li *ngFor="let noticia of noticias" class="list-group-item shadow-sm">
+        <h3 class="mb-3" style="font-family: 'Roboto', sans-serif; font-weight: 500;">{{ noticia.titulo }}</h3>
+        <!-- Mostrar la imagen solo si `noticia.imagenUrl` tiene un valor -->
+        <img *ngIf="noticia.imagenUrl" [src]="noticia.imagenUrl" alt="{{ noticia.titulo }}" class="img-fluid rounded mb-3 shadow-sm">
+        <p>{{ noticia.contenido }}</p>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-sm btn-outline-warning me-2" (click)="editNoticia(noticia)" style="font-weight: 500;">Editar</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteNoticia(noticia.id!)" style="font-weight: 500;">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+

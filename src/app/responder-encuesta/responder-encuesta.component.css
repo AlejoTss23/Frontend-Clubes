@@ -1,0 +1,33 @@
+h2.display-6 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .text-primary {
+    color: #007bff !important;
+  }
+  
+  .text-muted {
+    font-size: 1rem;
+    margin-top: -10px;
+  }
+  
+  .form-check-input {
+    transform: scale(1.3); /* Hace los checkboxes más grandes */
+  }
+  
+  .form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.8;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  

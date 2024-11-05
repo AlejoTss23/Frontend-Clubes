@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="text-center mb-5">
+        <h2 class="display-6">Respondiendo Encuesta: <span class="text-primary">{{ encuesta?.titulo }}</span></h2>
+        <p class="text-muted">{{ encuesta?.descripcion }}</p>
+      </div>
+      
+      <form (ngSubmit)="enviarRespuestas()">
+        <div *ngFor="let pregunta of encuesta?.preguntas" class="mb-4">
+          <label class="form-label fw-bold">{{ pregunta.textoPregunta }}</label>
+          
+          <ng-container [ngSwitch]="pregunta.tipoPregunta">
+            <!-- Pregunta de tipo texto -->
+            <input *ngSwitchCase="'texto'" type="text" [(ngModel)]="respuestas[pregunta.idPregunta]" name="respuesta-{{ pregunta.idPregunta }}" class="form-control form-control-lg" placeholder="Escribe tu respuesta aquí...">
+
+            <!-- Pregunta de tipo número -->
+            <input *ngSwitchCase="'numero'" type="number" [(ngModel)]="respuestas[pregunta.idPregunta]" name="respuesta-{{ pregunta.idPregunta }}" class="form-control form-control-lg" placeholder="Ingresa un número...">
+
+            <!-- Pregunta de selección única (dropdown) -->
+            <select *ngSwitchCase="'multiple'" [(ngModel)]="respuestas[pregunta.idPregunta]" name="respuesta-{{ pregunta.idPregunta }}" class="form-select form-select-lg">
+              <option *ngFor="let opcion of pregunta.opciones" [value]="opcion.idOpcion">{{ opcion.textoOpcion }}</option>
+            </select>
+
+            <!-- Pregunta de opción múltiple (checkboxes) -->
+            <div *ngSwitchCase="'multiple'" class="form-check-group">
+              <div *ngFor="let opcion of pregunta.opciones" class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" [value]="opcion.idOpcion" (change)="onCheckboxChange($event, pregunta.idPregunta, opcion.idOpcion)" [checked]="isChecked(pregunta.idPregunta, opcion.idOpcion)">
+                <label class="form-check-label">{{ opcion.textoOpcion }}</label>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg px-5">Enviar Respuestas</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

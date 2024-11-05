@@ -1,0 +1,58 @@
+.card {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.d-flex {
+    margin-top: 20px;
+}
+
+.no-border-radius {
+    border-radius: 0 !important;
+}
+
+.card {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 0; /* Sin bordes redondeados */
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 0 !important; /* Sin bordes redondeados */
+}
+
+.btn-danger, .btn-secondary {
+    border-radius: 0 !important; /* Sin bordes redondeados */
+}
+
+.d-flex {
+    margin-top: 20px;
+}
+

@@ -1,0 +1,55 @@
+<app-sidenav></app-sidenav>
+<div class="container my-5 d-flex justify-content-center">
+  <div class="card shadow-sm p-4" style="max-width: 500px; width: 100%;">
+      <div *ngIf="modoEdicion">
+          <h3 class="mb-4 text-center">Editar Contacto</h3>
+      </div>
+      <div *ngIf="!modoEdicion">
+          <h3 class="mb-4 text-center">Agregar Contacto</h3>
+      </div>
+
+      <form>
+          <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input id="nombre" [(ngModel)]="contactoActual.nombre" name="nombre" placeholder="Nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono Principal:</label>
+              <input id="telefono" [(ngModel)]="contactoActual.telefonoPrincipal" name="telefono" placeholder="Teléfono" class="form-control" required pattern="^\d{3}-\d{6}$">
+          </div>
+          <div class="mb-3">
+              <label for="telefonoSecundario" class="form-label">Teléfono Secundario:</label>
+              <input id="telefonoSecundario" [(ngModel)]="contactoActual.telefonoSecundario" name="telefonoSecundario" placeholder="Teléfono Secundario" class="form-control" pattern="^\d{3}-\d{6}$">
+          </div>
+          <div class="mb-3">
+              <label for="telefonoTerciario" class="form-label">Teléfono Terciario:</label>
+              <input id="telefonoTerciario" [(ngModel)]="contactoActual.telefonoTerciario" name="telefonoTerciario" placeholder="Teléfono Terciario" class="form-control" pattern="^\d{3}-\d{6}$">
+          </div>
+          <button (click)="guardar()" type="button" class="btn btn-primary btn-block btn-sm">{{modoEdicion ? 'Actualizar' : 'Agregar'}}</button>
+      </form>
+
+      <div class="my-4">
+          <h4 class="text-center">Buscar Contactos</h4>
+          <div class="mb-3">
+              <input [(ngModel)]="filtro" (input)="filtrarContactos()" placeholder="Buscar por nombre o teléfono" class="form-control mb-2" />
+              <button (click)="limpiarFiltro()" type="button" class="btn btn-outline-secondary btn-sm w-100">Limpiar</button>
+          </div>
+      </div>
+
+      <h4 class="text-center">Contactos</h4>
+      <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let contacto of contactosFiltrados">
+              <div>
+                  {{ contacto.nombre }} - {{ contacto.telefonoPrincipal }}
+                  <span *ngIf="contacto.telefonoSecundario">, {{ contacto.telefonoSecundario }}</span>
+                  <span *ngIf="contacto.telefonoTerciario">, {{ contacto.telefonoTerciario }}</span>
+              </div>
+              <div class="button-group">
+                  <button (click)="iniciarEdicion(contacto)" class="btn btn-sm btn-outline-primary me-2">Editar</button>
+                  <button (click)="eliminar(contacto.id)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+              </div>
+          </li>
+      </ul>
+  </div>
+</div>
+

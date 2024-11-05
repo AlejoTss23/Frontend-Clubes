@@ -1,0 +1,146 @@
+<app-sidenav></app-sidenav>
+<div class="container my-5">
+    <div class="card border p-4"> <!-- Sin sombreado o border para efecto limpio -->
+        <h2 class="text-center mb-4">Crear nueva encuesta</h2>
+
+        <form [formGroup]="encuestaForm" (ngSubmit)="submitEncuesta()">
+            <!-- Título de la encuesta -->
+            <div class="form-group mb-3">
+                <label for="titulo" class="form-label">Título de la encuesta</label>
+                <input id="titulo" formControlName="titulo" class="form-control" placeholder="Ingrese el título de la encuesta" />
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group mb-4">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea id="descripcion" formControlName="descripcion" class="form-control" rows="3" placeholder="Ingrese una descripción"></textarea>
+            </div>
+
+            <!-- Preguntas -->
+            <div formArrayName="preguntas">
+                <div *ngFor="let pregunta of preguntas.controls; let i = index" [formGroupName]="i" class="border p-3 rounded mb-4 bg-light">
+                    <h4 class="text-primary">Pregunta {{ i + 1 }}</h4>
+
+                    <!-- Texto de la pregunta -->
+                    <div class="form-group mb-3">
+                        <label for="textoPregunta" class="form-label">Texto de la pregunta</label>
+                        <input id="textoPregunta" formControlName="textoPregunta" class="form-control" placeholder="Ingrese la pregunta" />
+                    </div>
+
+                    <!-- Tipo de pregunta -->
+                    <div class="form-group mb-3">
+                        <label for="tipoPregunta" class="form-label">Tipo de pregunta</label>
+                        <select id="tipoPregunta" formControlName="tipoPregunta" class="form-select">
+                            <option value="multiple">Opción múltiple</option>
+                            <option value="texto">Texto</option>
+                            <option value="numero">Número</option>
+                            <option value="si-no">Sí / No</option>
+                        </select>
+                    </div>
+
+                    <!-- Opciones (sólo si es opción múltiple o si/no) -->
+                    <div formArrayName="opciones" *ngIf="pregunta.get('tipoPregunta')?.value === 'multiple' || pregunta.get('tipoPregunta')?.value === 'si-no'">
+                        <h5 class="mb-2 text-secondary">Opciones:</h5>
+                        <div *ngFor="let opcion of getOpciones(i).controls; let j = index" [formGroupName]="j" class="input-group mb-2">
+                            <input formControlName="textoOpcion" placeholder="Texto de la opción" class="form-control" />
+                        </div>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-2" (click)="addOpcion(i)">Agregar opción</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones para agregar más preguntas -->
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-secondary" (click)="addPregunta()">Agregar nueva pregunta</button>
+                <button type="submit" class="btn btn-success">Crear Encuesta</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Tabla para mostrar encuestas existentes -->
+    <div class="card border p-4 mt-5"> <!-- Sombra ligera o sin sombra -->
+        <h2 class="text-center mb-4">Encuestas existentes</h2>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let encuesta of encuestas">
+                    <td>{{ encuesta.titulo }}</td>
+                    <td>{{ encuesta.descripcion }}</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-primary me-2" (click)="editEncuesta(encuesta.id)">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" (click)="deleteEncuesta(encuesta.id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Listado de respuestas agrupadas -->
+    <div class="card border p-4 mt-5"> <!-- Menos sombra o sin sombra -->
+        <h2 class="text-center mb-4">Respuestas Agrupadas</h2>
+        <ul class="list-group mb-4">
+            <li *ngFor="let grupo of respuestasAgrupadas" class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Respuesta Grupo: {{ grupo }}</span>
+                <button class="btn btn-outline-primary" (click)="abrirModalRespuestas(grupo)">Ver Respuestas</button>
+            </li>
+        </ul>
+        <div *ngFor="let encuesta of encuestas" class="text-center">
+          <button class="btn btn-outline-info" (click)="verEstadisticas(encuesta.id)">Ver estadísticas</button>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar respuestas -->
+    <div *ngIf="selectedGroupId" class="modal" tabindex="-1" role="dialog" style="display:block; background-color: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Respuestas del Grupo: {{ selectedGroupId }}</h5>
+            <button type="button" class="close text-white" (click)="cerrarModal()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div *ngFor="let respuesta of respuestasSeleccionadas">
+              <p><strong>Pregunta:</strong> {{ respuesta.textoPregunta }}</p>
+              <p *ngIf="respuesta.textoOpcion"><strong>Respuesta:</strong> {{ respuesta.textoOpcion }}</p>
+              <p *ngIf="respuesta.respuestaTexto"><strong>Respuesta:</strong> {{ respuesta.respuestaTexto }}</p>
+              <p *ngIf="respuesta.respuestaNumero"><strong>Respuesta:</strong> {{ respuesta.respuestaNumero }}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="cerrarModal()">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para mostrar las estadísticas -->
+    <div *ngIf="mostrarModalEstadisticas" class="modal" tabindex="-1" role="dialog" style="display:block; background-color: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title">Estadísticas</h5>
+            <button type="button" class="close text-white" (click)="cerrarModalEstadisticas()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div *ngFor="let estadistica of estadisticas; let i = index">
+              <h5>{{ estadistica.pregunta }}</h5>
+              <canvas [id]="'barChart' + i"></canvas>
+              <canvas [id]="'pieChart' + i"></canvas>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="cerrarModalEstadisticas()">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

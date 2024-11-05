@@ -1,0 +1,57 @@
+.container {
+    max-width: 900px;
+  }
+  
+  .card {
+    border-radius: 0;
+    border: 1px solid #dee2e6;
+  }
+  
+  .card-header {
+    font-size: 1.25rem;
+  }
+  
+  .card-body .form-label {
+    font-weight: bold;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table th,
+  .table td {
+    vertical-align: middle;
+  }
+  
+  .btn {
+    border-radius: 0;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  .table-responsive {
+    margin-top: 20px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  

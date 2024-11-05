@@ -1,0 +1,32 @@
+.container {
+    margin-top: 20px;
+  }
+  .card {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .btn-outline-primary {
+    border-radius: 50px;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  

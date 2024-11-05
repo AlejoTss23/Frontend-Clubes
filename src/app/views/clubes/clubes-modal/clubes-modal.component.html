@@ -1,0 +1,204 @@
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center mb-4">Agregar Club</h3>
+            <form (ngSubmit)="aceptar()">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>ID</mat-label>
+                            <input matInput placeholder="ID" [(ngModel)]="clubes.idClubes" name="idClubes">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeholder="Nombre" [(ngModel)]="clubes.nombre" name="nombre">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Localidad</mat-label>
+                            <input matInput placeholder="Localidad" [(ngModel)]="clubes.localidad" name="localidad">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Calle</mat-label>
+                            <input matInput placeholder="Calle" [(ngModel)]="clubes.calle" name="calle">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>N°</mat-label>
+                            <input matInput placeholder="Numero de calle" [(ngModel)]="clubes.NumeroDeCalle" name="numero de calle">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Mail</mat-label>
+                            <input matInput placeholder="mail" [(ngModel)]="clubes.mail" name="Mail">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Instagram</mat-label>
+                            <input matInput placeholder="instagram" [(ngModel)]="clubes.instagram" name="Instagram">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Fcebook</mat-label>
+                            <input matInput placeholder="Facebook" [(ngModel)]="clubes.facebook" name="facebook">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Otra red Social</mat-label>
+                            <input matInput placeholder="otra red social" [(ngModel)]="clubes.otraredsocial" name="otra red social">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput placeholder="3456-455656" [(ngModel)]="clubes.telefono" name="telefono">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Celular</mat-label>
+                            <input matInput placeholder="Celular" [(ngModel)]="clubes.celular" name="celular" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Página Web</mat-label>
+                            <input matInput placeholder="Página Web" [(ngModel)]="clubes.paginaWeb" name="paginaWeb" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Código Postal</mat-label>
+                            <input matInput placeholder="Código Postal" [(ngModel)]="clubes.codigoPostal" name="codigoPostal" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Fecha de Fundación</mat-label>
+                            <input matInput [matDatepicker]="picker1" placeholder="Selecciona una fecha" [(ngModel)]="clubes.fechaFundacion" name="fechaFundacion" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Personería Jurídica</mat-label>
+                            <input matInput placeholder="Personería Jurídica" [(ngModel)]="clubes.personeriaJuridica" name="personeriaJuridica" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Número de Legajo</mat-label>
+                            <input matInput placeholder="Número de Legajo" [(ngModel)]="clubes.numeroLegajo" name="numeroLegajo" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Tipo Legal</mat-label>
+                            <input matInput placeholder="Tipo Legal" [(ngModel)]="clubes.tipoLegal" name="tipoLegal" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Departamento</mat-label>
+                            <mat-select [(ngModel)]="clubes.departamento" name="departamento" required>
+                                <mat-option value="Belgrano">Belgrano</mat-option>
+                                <mat-option value="Caseros">Caseros</mat-option>
+                                <mat-option value="Castellanos">Castellanos</mat-option>
+                                <mat-option value="Constitución">Constitución</mat-option>
+                                <mat-option value="Garay">Garay</mat-option>
+                                <mat-option value="General López">General López</mat-option>
+                                <mat-option value="General Obligado">General Obligado</mat-option>
+                                <mat-option value="Iriondo">Iriondo</mat-option>
+                                <mat-option value="La Capital">La Capital</mat-option>
+                                <mat-option value="Las Colonias">Las Colonias</mat-option>
+                                <mat-option value="9 de Julio">9 de Julio</mat-option>
+                                <mat-option value="Rosario">Rosario</mat-option>
+                                <mat-option value="San Cristóbal">San Cristóbal</mat-option>
+                                <mat-option value="San Javier">San Javier</mat-option>
+                                <mat-option value="San Jerónimo">San Jerónimo</mat-option>
+                                <mat-option value="San Justo">San Justo</mat-option>
+                                <mat-option value="San Lorenzo">San Lorenzo</mat-option>
+                                <mat-option value="San Martín">San Martín</mat-option>
+                                <mat-option value="Vera">Vera</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Fecha de Personería Jurídica</mat-label>
+                            <input matInput [matDatepicker]="picker2" placeholder="Selecciona una fecha" [(ngModel)]="clubes.fechaPersoneriaJuridica" name="fechaPersoneriaJuridica" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Nodo</mat-label>
+                            <mat-select [(ngModel)]="clubes.nodo" name="nodo" required>
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                                <mat-option value="3">3</mat-option>
+                                <mat-option value="4">4</mat-option>
+                                <mat-option value="5">5</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Opción Personería Jurídica</mat-label>
+                            <mat-select [(ngModel)]="clubes.opcionPersoneriaJuridica" name="opcionPersoneriaJuridica" required>
+                                <mat-option value="aporta_datos">Aporta Datos</mat-option>
+                                <mat-option value="tiene_personeria_juridica">Tiene Personería Jurídica</mat-option>
+                                <mat-option value="no_tiene_personeria_juridica">No Tiene Personería Jurídica</mat-option>
+                                <mat-option value="otros_datos">Otros Datos</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="button" mat-button (click)="cerrar()" class="btn btn-outline-secondary me-2">Cancelar</button>
+                    <button type="submit" mat-raised-button color="primary" class="btn btn-primary">Aceptar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+  
+
+
+
+
+

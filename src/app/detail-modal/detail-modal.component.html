@@ -1,0 +1,47 @@
+<h2 mat-dialog-title class="modal-title">Detalles del Club: {{ data.club.nombre }}</h2>
+
+<mat-dialog-content class="modal-content">
+  <!-- Sección de Contacto -->
+  <div class="section">
+    <h4 class="section-title">Contacto</h4>
+    <p><strong>Teléfono:</strong> {{ data.club.telefono }}</p>
+    <p><strong>Teléfono Celular:</strong> {{ data.club.celular }}</p>
+    <p><strong>Email:</strong> <a href="mailto:{{ data.club.mail }}">{{ data.club.mail }}</a></p>
+  </div>
+
+  <!-- Sección de Información -->
+  <div class="section">
+    <h4 class="section-title">Información</h4>
+    <p><strong>Departamento:</strong> {{ data.club.departamento }}</p>
+    <p><strong>Localidad:</strong> {{ data.club.localidad }}</p>
+    <p><strong>Calle:</strong> {{ data.club.calle }}</p>
+    <p><strong>N°:</strong> {{ data.club.NumeroDeCalle }}</p>
+    <p><strong>Código Postal:</strong> {{ data.club.codigoPostal }}</p>
+    <p><strong>Fecha de Fundación:</strong> {{ data.club.fechaFundacion | date: 'longDate' }}</p>
+  </div>
+
+  <!-- Sección de Redes Sociales -->
+  <div class="section">
+    <h4 class="section-title">Redes Sociales</h4>
+    <p><strong>Página Web:</strong> <a [href]="data.club.paginaWeb" target="_blank">{{ data.club.paginaWeb }}</a></p>
+    <p><strong>Instagram:</strong> <a [href]="data.club.instagram" target="_blank">{{ data.club.instagram }}</a></p>
+    <p><strong>Facebook:</strong> <a [href]="data.club.facebook" target="_blank">{{ data.club.facebook }}</a></p>
+    <p><strong>Otra Red Social:</strong> <a [href]="data.club.otraredsocial" target="_blank">{{ data.club.otraredsocial }}</a></p>
+  </div>
+
+  <!-- Sección de Información Legal -->
+  <div class="section">
+    <h4 class="section-title">Información Legal</h4>
+    <p><strong>Personería Jurídica:</strong> {{ data.club.personeriaJuridica }}</p>
+    <p><strong>Número de Legajo:</strong> {{ data.club.numeroLegajo }}</p>
+    <p><strong>Fecha de Personería Jurídica:</strong> {{ data.club.fechaPersoneriaJuridica | date: 'longDate' }}</p>
+    <p><strong>Tipo de Personería Jurídica:</strong> {{ data.club.opcionPersoneriaJuridica }}</p>
+    <p><strong>Tipo Legal:</strong> {{ data.club.tipoLegal }}</p>
+    <p><strong>Nodo:</strong> {{ data.club.nodo }}</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="modal-actions">
+  <button mat-button color="primary" (click)="closeModal()">Cerrar</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,56 @@
+<nav class="navbar bg-body-tertiary  custom-navbar-bg">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-start custom-offcanvas-width" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/clubes']">Clubes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/contacto']">Contactos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/mail']">Mails</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/gestion-cuentas']">Cuentas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/ubicacion-clubes']">Ubicación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/calendario']">Calendario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/noticias-admin']">Noticias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/Admin-encuesta']">Encuestas</a>
+          </li>
+          <li class="nav-item mt-auto">
+            <button (click)="logout()" class="btn btn-light w-100 d-flex justify-content-center align-items-center">
+            Cerrar sesión
+            </button>
+        </li>                    
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+

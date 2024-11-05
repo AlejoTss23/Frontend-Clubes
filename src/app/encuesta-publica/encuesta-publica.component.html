@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+      <!-- Logo del sitio o nombre -->
+      <a class="navbar-brand" routerLink="/">
+          Clubes Emergentes
+      </a>
+      <!-- Botón del menú hamburguesa en móviles -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <!-- Enlaces del menú -->
+              <li class="nav-item">
+                <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/eventos">Eventos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="navigateToNoticias()">Noticia</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="navigateToEncuestas()">Encuestas</a>
+              </li>
+              <!-- Botón de Login -->
+              <li class="nav-item">
+                  <a class="btn btn-outline-light ms-2" (click)="navigateToLogin()">Acceder</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<div class="container py-5">
+  <h2 class="text-center mb-5">Encuestas Disponibles</h2>
+  <div class="row">
+    <div *ngFor="let encuesta of encuestas" class="col-md-6 col-lg-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title text-primary">{{ encuesta.titulo }}</h5>
+          <p class="card-text text-muted">{{ encuesta.descripcion }}</p>
+          <button class="btn btn-outline-primary w-100 mt-auto" (click)="responderEncuesta(encuesta.id)">
+            Responder Encuesta
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,344 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            /* Ajustes en el carousel para pantallas pequeñas */
+            .carousel-caption {
+                font-size: 14px; /* Tamaño del texto del carousel */
+            }
+            .encuesta-btn {
+                padding: 10px 20px; /* Botón más pequeño */
+                font-size: 16px; /* Fuente más pequeña */
+            }
+
+            /* Ajustar el tamaño del texto en las secciones */
+            section h2 {
+                font-size: 24px;
+            }
+            section p {
+                font-size: 14px;
+            }
+
+            /* Ajuste en testimonios */
+            .card-title {
+                font-size: 18px;
+            }
+
+            .testimonial-item p {
+                font-size: 12px;
+            }
+        }
+
+        /* Footer sin box-shadow */
+        footer.footer {
+            padding: 50px 0;
+            background-color: #b0b0b0;
+        }
+
+        /* General styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Carousel */
+        .carousel-inner img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        /* Secciones */
+        section {
+            padding: 30px 0;
+        }
+
+        /* Botón de encuesta */
+        .encuesta-btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .encuesta-btn:hover {
+            background-color: #b0b0b0;
+            color: #ffffff;
+            border-color: #b0b0b0;
+        }
+    </style>
+</head>
+
+<!-- Body content remains the same -->
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <!-- Logo del sitio o nombre -->
+          <a class="navbar-brand" routerLink="/">
+            Clubes Emergentes
+          </a>
+          <!-- Botón del menú hamburguesa en móviles -->
+          <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> <!-- Ícono del menú hamburguesa -->
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+              <!-- Enlaces del menú -->
+              <li class="nav-item">
+                <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/eventos">Eventos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="navigateToNoticias()">Noticia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="navigateToEncuestas()">Encuestas</a>
+              </li>
+              <!-- Botón de Login -->
+              <li class="nav-item">
+                <a class="btn btn-outline-light ms-2" (click)="navigateToLogin()">Acceder</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      
+
+    <!-- Carrusel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <!-- Primera Imagen: Botón Encuesta en el Centro y Tamaño Ajustado -->
+            <div class="carousel-item active">
+                <img src="assets/images.jpeg" class="d-block w-100" alt="Apretón de manos entre jugadores" style="max-height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-flex justify-content-center align-items-center">
+                </div>
+            </div>
+            <!-- Segunda Imagen: Blanco y Negro -->
+            <div class="carousel-item">
+                <img src="assets/Un-pibe-mas-en-el-club-un-chico-menos-en-la-calle-la-realidad-de-las-instituciones-barriales-a-lo-largo-y-ancho-del-pais.png" class="d-block w-100" alt="Mural con mensaje inspirador" style="filter: grayscale(100%); max-height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- Puedes agregar texto adicional aquí si lo deseas -->
+                </div>
+            </div>
+            <!-- Tercera Imagen: Difuminado con Texto Inspirador -->
+            <div class="carousel-item">
+                <img src="assets/unnamed.jpg" class="d-block w-100" alt="Grupo de niños y entrenadores" style="filter: blur(3px); max-height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="manuscrita">Juntos construimos el futuro, un partido a la vez.</h5>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Sección de Bienvenida -->
+    <section class="bg-white text-center py-5">
+        <div class="container">
+            <h2 class="font-weight-bold" style="font-family: 'Montserrat', sans-serif;">Bienvenidos a Clubes Emergentes</h2>
+            <p class="lead mb-4" style="font-family: 'Roboto', sans-serif;">
+                Esta página está dedicada a la situación actual de los clubes en Argentina, especialmente aquellos que están atravesando momentos difíciles con el nuevo gobierno. Aquí, exploramos los desafíos que enfrentan y cómo continúan siendo un pilar fundamental en sus comunidades.
+            </p>
+            <a href="#clubes" class="btn btn-primary btn-lg">Conoce Nuestros Clubes</a>
+        </div>
+    </section>
+
+  <!-- Sección: Breve repaso por la historia de los Clubes en Argentina -->
+<section class="bg-light text-center py-5">
+    <div class="container">
+        <h2 class="font-weight-bold" style="font-family: 'Montserrat', sans-serif;">Breve repaso por la historia de los Clubes en Argentina</h2>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Los clubes de barrio en Argentina tienen una historia rica y centenaria, que se remonta a finales del siglo XIX y principios del XX. Fundados en su mayoría por inmigrantes europeos, estos clubes comenzaron como espacios comunitarios donde se fomentaba la práctica del deporte, especialmente el fútbol. Con el tiempo, se convirtieron en pilares fundamentales de la vida social y cultural de los barrios, funcionando no solo como lugares para la recreación, sino también como centros de encuentro y de desarrollo comunitario.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            En las décadas de 1920 y 1930, el fútbol se consolidó como el deporte más popular del país, y los clubes se multiplicaron rápidamente. Cada barrio quería tener su propio equipo, lo que llevó a la creación de ligas locales y, eventualmente, a la fundación de la Asociación del Fútbol Argentino (AFA). A lo largo de los años, estos clubes no solo se destacaron en el ámbito deportivo, sino que también jugaron un papel crucial en la vida cotidiana de millones de argentinos, siendo un espacio para el desarrollo de actividades culturales, educativas y sociales.
+        </p>
+    </div>
+</section>
+
+<!-- Sección: Impacto Social de los Clubes -->
+<section class="bg-white text-center py-5">
+    <div class="container">
+        <h2 class="font-weight-bold" style="font-family: 'Montserrat', sans-serif;">Impacto Social de los Clubes</h2>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            El impacto de los clubes en Argentina va mucho más allá del deporte. Estos espacios han sido y siguen siendo el corazón de las comunidades, proporcionando un lugar seguro donde niños, jóvenes y adultos pueden participar en actividades que fomentan el compañerismo, la disciplina y el respeto. En muchos barrios, los clubes son los únicos espacios disponibles para la práctica deportiva y la recreación, lo que los convierte en esenciales para el bienestar social y emocional de sus miembros.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Además, los clubes han sido históricamente un refugio para los jóvenes en situación de vulnerabilidad, ofreciéndoles una alternativa positiva a la calle. A través del deporte, muchos niños y adolescentes encuentran en los clubes una forma de escapar de las problemáticas sociales y económicas que enfrentan en su vida diaria. Por esto, los clubes desempeñan un rol fundamental en la construcción de una sociedad más inclusiva y equitativa.
+        </p>
+    </div>
+</section>
+
+<!-- Sección Importancia de los Clubes -->
+<section class="bg-light text-center py-5">
+    <div class="container">
+        <h2 class="font-weight-bold" style="font-family: 'Montserrat', sans-serif;">Importancia de los Clubes</h2>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Los clubes de barrio y los equipos emergentes son mucho más que simples lugares donde se practica deporte. En Argentina, un país donde el fútbol es parte esencial de nuestra identidad cultural, estos clubes representan los valores fundamentales de nuestras comunidades. Son espacios donde se forjan amistades, se construyen sueños y se desarrollan habilidades que trascienden el ámbito deportivo.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            En un contexto de desafíos económicos y sociales, los clubes emergentes juegan un rol crucial en la contención y desarrollo de los chicos y chicas. Aquí, no solo se les enseña a jugar al fútbol, sino que se les brinda una educación en valores como el respeto, la disciplina y la solidaridad. Estos clubes se convierten en un refugio, un lugar seguro donde cada niño y niña puede ser parte de algo más grande, donde pueden crecer rodeados de apoyo y de un sentido de pertenencia.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Pero la importancia de estos clubes va más allá de los jóvenes. Son el alma de nuestras comunidades, un punto de encuentro para personas de todas las edades, donde se fortalecen los lazos sociales y se fomenta la participación ciudadana. Los clubes son, en muchos casos, los verdaderos centros culturales y sociales de los barrios, ofreciendo actividades para todas las edades y promoviendo un estilo de vida saludable y activo.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            En tiempos difíciles, como los que atraviesa nuestro país, estos clubes necesitan más que nunca de nuestro apoyo. Al preservar y fortalecer los clubes de barrio, no solo mantenemos viva una tradición deportiva, sino que también invertimos en el futuro de nuestras comunidades. Por eso, en Clubes Emergentes, te invitamos a conocer, apoyar y formar parte de esta red de instituciones que, con esfuerzo y pasión, siguen siendo un pilar fundamental en la vida de tantas personas.
+        </p>
+    </div>
+</section>
+
+<!-- Sección: Políticas de Inclusión en los Clubes -->
+<section class="bg-light text-center py-5">
+    <div class="container">
+        <h2 class="font-weight-bold" style="font-family: 'Montserrat', sans-serif;">Políticas de Inclusión en los Clubes</h2>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            En la actualidad, los clubes están trabajando cada vez más en la implementación de políticas de inclusión que aseguren que todos los miembros de la comunidad, independientemente de su género, origen étnico, condición social o capacidades físicas, puedan participar plenamente en las actividades que ofrecen. Iniciativas como la creación de equipos mixtos, la inclusión de personas con discapacidades en actividades deportivas, y la organización de talleres sobre igualdad de género son solo algunos ejemplos de cómo los clubes están avanzando en este aspecto.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Estas políticas no solo fortalecen la cohesión social dentro de los clubes, sino que también promueven un ambiente de respeto y solidaridad, donde todos los individuos se sienten valorados y apoyados.
+        </p>
+    </div>
+</section>
+
+<!-- Sección: Desafíos Actuales de los Clubes en Argentina -->
+<section class="bg-white text-center py-5">
+    <div class="container">
+        <h2 class="font-weight-bold" style="font-family: 'Montserrat', sans-serif;">Desafíos Actuales de los Clubes en Argentina</h2>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Hoy en día, los clubes de barrio enfrentan una serie de desafíos significativos. La situación económica del país ha afectado gravemente su capacidad para mantenerse y continuar ofreciendo sus servicios. Muchos clubes luchan por obtener los recursos necesarios para mantener sus instalaciones, pagar a su personal y seguir siendo un refugio para sus comunidades.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            Además, la presión por comercializar y profesionalizar el deporte, junto con la amenaza de las Sociedades Anónimas Deportivas (SAD), ha generado preocupaciones sobre el futuro de los clubes como entidades sin fines de lucro. Existe un riesgo real de que los valores comunitarios que han caracterizado a estos clubes se pierdan en favor de un enfoque más orientado al lucro.
+        </p>
+        <p class="mb-4" style="font-family: 'Open Sans', sans-serif;">
+            A pesar de estos desafíos, los clubes siguen siendo una parte esencial del tejido social en Argentina. Con el apoyo adecuado, tanto del gobierno como de la comunidad, estos clubes pueden continuar su misión de promover el deporte, la cultura y la inclusión social, y seguir siendo un pilar fundamental en la vida de millones de personas.
+        </p>
+    </div>
+</section>
+
+<!-- Sección SAD -->
+<section class="bg-light text-center py-5">
+    <div class="container">
+        <h2>¿Por qué no a las Sociedades Anónimas Deportivas (SAD)?</h2>
+        <p class="lead mb-4">
+            En los últimos años, la idea de convertir los clubes de fútbol en Sociedades Anónimas Deportivas (SAD) ha ganado fuerza en varios países. Sin embargo, en Argentina, este modelo ha encontrado una fuerte resistencia, y no sin razón. Los clubes en nuestro país han sido, históricamente, mucho más que simples entidades deportivas. Han sido el corazón de las comunidades, instituciones que han crecido y se han desarrollado gracias al esfuerzo colectivo de sus socios y simpatizantes.
+        </p>
+        <p class="mb-4">
+            Transformar estos clubes en Sociedades Anónimas Deportivas significa, en esencia, convertirlos en empresas cuyo objetivo principal es el lucro. Este cambio de paradigma podría tener consecuencias profundas y negativas para el fútbol argentino. En primer lugar, existe el riesgo de que los intereses económicos pasen a primer plano, dejando en segundo lugar los valores deportivos y comunitarios que han caracterizado a nuestros clubes durante décadas.
+        </p>
+        <p class="mb-4">
+            La experiencia de otros países que han adoptado el modelo SAD muestra que, si bien puede traer inversiones a corto plazo, a menudo conduce a la pérdida de la identidad de los clubes. Los equipos que alguna vez fueron símbolo de sus comunidades pueden convertirse en simples marcas comerciales, con directivas más interesadas en los balances financieros que en el bienestar de sus aficionados. Esto puede resultar en un alejamiento entre los clubes y sus hinchas, quienes ya no se sienten parte de la institución que alguna vez los representó.
+        </p>
+        <p class="mb-4">
+            Además, las SAD pueden limitar el acceso al deporte para las clases más vulnerables. En un país con profundas desigualdades económicas, los clubes de barrio y las instituciones deportivas sin fines de lucro son esenciales para garantizar que todos los niños y jóvenes tengan la oportunidad de practicar deporte. Convertir estos clubes en entidades con fines de lucro podría encarecer el acceso a las instalaciones y actividades, excluyendo a aquellos que más se beneficiarían de ellas.
+        </p>
+        <p class="mb-4">
+            Defender la estructura actual de los clubes argentinos no es una postura en contra del progreso o la modernización, sino una defensa de los principios sobre los cuales se construyeron estas instituciones. Los clubes deben seguir siendo de sus socios, gestionados por personas que compartan los mismos valores y que entiendan la importancia de preservar la identidad y la función social de cada equipo. Solo así podremos garantizar que el fútbol siga siendo un deporte inclusivo, accesible y profundamente arraigado en la cultura de nuestro país.
+        </p>
+    </div>
+</section>
+<div class="container mt-5 pt-4 border-top">
+    <h2 class="text-center mb-5">Testimonios en Contra de las SAD</h2>
+    <div class="row">
+        <!-- Testimonio 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm text-center border-0">
+                <div class="card-body">
+                    <img src="assets/jorgebritos.jpeg" class="rounded-circle mb-3" alt="Jorge Britos" style="width: 100px; height: 100px;">
+                    <h5 class="card-title">Jorge Britos Pte. River Plate</h5>
+                    <p class="card-text">"En River lo hemos ratificado hace algunos años en una asamblea aprobada por una unanimidad. Fuimos, somos y seguiremos siendo una asociación civil sin fines de lucro. Es algo que diariamente lo ratificamos con hechos y es un modelo de gestión. No hace falta ser una SAD para ser una asociación civil eficiente como es River, que compite en lo más alto y que ratificamos con hechos, como las áreas educativas, los más de 40 deportes, las escuelas deportivas... Es un gran orgullo que nos representa y estamos muy contentos"</p>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonio 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm text-center border-0">
+                <div class="card-body">
+                    <img src="assets/chiquitapiaafa.jpg" class="rounded-circle mb-3" alt="Claudio 'chiqui' Tapia" style="width: 100px; height: 100px;">
+                    <h5 class="card-title">Claudio "chiqui" Tapia Pte. de AFA</h5>
+                    <p class="card-text">"El modelo de fútbol que para quien les habla y el comité ejecutivo representamos, es el del futbol federal. Nuestros clubes tienen una función social, deportiva y cultural que va más allá de cualquier proyecto privado que pueda haber".</p>
+                    <p>"Los clubes que ustedes representan tienen historia, sangre, años, parte de sus familias y seres queridos han dejado su vida para apoyar a sus clubes. Entendemos cuál es la identidad del futbol argentino, defendemos este modelo porque es lo que nosotros queremos. No nos oponemos a distintas opiniones que nos quieren hacer ver, pero somos dirigentes que tenemos bien en claro que es lo que queremos".</p>  
+                </div>
+            </div>
+        </div>
+        <!-- Testimonio 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm text-center border-0">
+                <div class="card-body">
+                    <img src="assets/dtgimnasia.webp" class="rounded-circle mb-3" alt="Mariano Cowen" style="width: 100px; height: 100px;">
+                    <h5 class="card-title">Mariano Cowen Pte. de Gimnasia de la Plata</h5>
+                    <p class="card-text">"El fútbol argentino tiene una estructura que respeta la historia y la idiosincrasia de sus clubes, donde los socios son quienes eligen y deciden el rumbo de las instituciones".</p>
+                    <p>"El empresario no necesariamente es mejor administrador que el dirigente del club. En Gimnasia hemos demostrado que una gestión sana y responsable es posible sin recurrir a capitales externos".</p>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+
+    <!-- Footer -->
+    <footer class="footer py-4" style="background-color: #b0b0b0;">
+        <div class="container">
+            <div class="row">
+                <!-- Enlaces relevantes a secciones -->
+                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#!" style="color: #ffffff;">Sobre Nosotros</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!" style="color: #ffffff;">Contacto</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!" style="color: #ffffff;">Términos de Uso</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!" style="color: #ffffff;">Política de Privacidad</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0" style="color: #ffffff;">&copy; Tu Sitio 2023. Todos los derechos reservados.</p>
+                </div>
+                <!-- Enlaces a redes sociales con íconos -->
+                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-4">
+                            <a href="#!" style="color: #ffffff;"><i class="bi bi-facebook fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item me-4">
+                            <a href="#!" style="color: #ffffff;"><i class="bi bi-instagram fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item me-4">
+                            <a href="#!" style="color: #ffffff;"><i class="bi bi-twitter fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!" style="color: #ffffff;"><i class="bi bi-whatsapp fs-3"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+

@@ -1,0 +1,97 @@
+body {
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group .form-control {
+  border-right: none;
+}
+
+.input-group .btn-outline-secondary {
+  border-left: none;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.list-group-item {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+
+input::placeholder {
+  font-style: italic;
+  color: #6c757d;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+}
+
+
